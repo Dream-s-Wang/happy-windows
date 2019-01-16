@@ -1,0 +1,80 @@
+git add 文件名 #提交修改
+git status (-s)#查看状态
+git diff #比较不同已add与当前
+git diff --cached #比较不同已add与上一个已add
+git commit -m "change 1"#记录日志
+git log	（--oneline）#查看日志
+git commit --amend --no-edit #添加到上一日志
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+操作整个git
+git reset 文件名 #返回未add状态
+
+$ git log --oneline
+b890d99 (HEAD -> master) change 4
+20664d6 change 3
+abeaf21 change 2
+392fb8a change 1
+
+$ git reset --hard HEAD
+HEAD 现在位于 b890d99 change 4
+
+$ git reset --hard HEAD^
+HEAD 现在位于 20664d6 change 3
+
+$ git reset --hard b890d99
+HEAD 现在位于 b890d99 change 4
+
+$ git reset --hard HEAD^
+HEAD 现在位于 20664d6 change 3
+
+$ git reflog
+20664d6 (HEAD -> master) HEAD@{0}: reset: moving to HEAD^
+b890d99 HEAD@{1}: reset: moving to b890d99
+20664d6 (HEAD -> master) HEAD@{2}: reset: moving to HEAD^
+b890d99 HEAD@{3}: reset: moving to HEAD
+b890d99 HEAD@{4}: commit: change 4
+20664d6 (HEAD -> master) HEAD@{5}: commit: change 3
+abeaf21 HEAD@{6}: commit (amend): change 2
+5451e79 HEAD@{7}: commit (amend): change 2
+b0a95ec HEAD@{8}: commit: change 2
+392fb8a HEAD@{9}: commit (initial): change 1
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+操作单个文件
+git checkout 码 -- 文件名
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+分支
+git log --oneline --graph
+
+git branch 分支名 #建立分支
+git branch  #查看分支
+git checkout 分支名 #选择切换分支
+git branch -d 分支名 #删除分支
+git checkout -b 分支名 #建立分支并选择
+git commit -am "change x" #add修改并记录
+git merge --no-ff -m "change x" dev #在master下将dev推到master
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+merge分支冲突
+手动合并
+git commit -am "change x" #add修改并记录
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+rebase分支冲突
+git rebase dev #在master下将dev分支强行合并到master，会改写历史，慎用
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+临时修改（stash）
+git stash #当前存到暂存区
+建新分支，……完成其他
+git checkout 原分支
+git stash pop #恢复暂存区文件
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+github
+git push -u origin master
+
+
+
+
+
+
+
+
